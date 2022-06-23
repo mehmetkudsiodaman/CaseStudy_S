@@ -14,25 +14,35 @@ namespace Player
             public Transform cube;
         }
 
-        private void FixedUpdate()
+        private void OnTriggerEnter(Collider other)
         {
-            // layerMask = 1 << 0 => "Default"
-            // layerMask = 1 << 7 => "Cubes"
-            int layerMask = 1 << 7;
-
-            RaycastHit hit;
-            if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward),
-                out hit, maxDistance: .45f, layerMask))
+            if (other.CompareTag("Cube"))
             {
-                //Debug.Log(hit.transform.name + " Hit");
-                cube = hit.transform;
+                cube = other.transform;
                 OnCubeDetected?.Invoke(this, new OnCubeDetectedEventArgs { cube = cube });
             }
+
         }
 
-        private void OnDrawGizmos()
-        {
-            Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * .45f, Color.green);
-        }
+        //private void FixedUpdate()
+        //{
+        //    // layerMask = 1 << 0 => "Default"
+        //    // layerMask = 1 << 7 => "Cubes"
+        //    int layerMask = 1 << 7;
+        //    RaycastHit hit;
+        //    if (Physics.SphereCast(transform.position, radius: .45f, transform.TransformDirection(Vector3.forward),
+        //        out hit, maxDistance: .45f, layerMask))
+        //    {
+        //        //Debug.Log(hit.transform.name + " Hit");
+        //        cube = hit.transform;
+        //        OnCubeDetected?.Invoke(this, new OnCubeDetectedEventArgs { cube = cube });
+        //    }
+        //}
+
+        //private void OnDrawGizmos()
+        //{
+        //    Gizmos.color = Color.green;
+        //    Gizmos.DrawSphere(transform.position, radius: .45f);
+        //}
     }
 }
