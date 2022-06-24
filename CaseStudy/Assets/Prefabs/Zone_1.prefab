@@ -13,8 +13,9 @@ GameObject:
   - component: {fileID: 1934535854926043504}
   - component: {fileID: 1934535854926043507}
   - component: {fileID: 1934535854926043503}
+  - component: {fileID: 3111539472268258847}
   m_Layer: 0
-  m_Name: Zone
+  m_Name: Zone_1
   m_TagString: Zone
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -114,6 +115,20 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 8, y: 2.5, z: 8}
   m_Center: {x: 0, y: 1, z: 0}
+--- !u!114 &3111539472268258847
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1934535854926043502}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed992e9f98c05d3438203fc02be4a424, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  zoneSO: {fileID: 11400000, guid: 36e8df2003aaad0468701b6e0ebebe28, type: 2}
+  zoneText: {fileID: 6665222262918906612}
 --- !u!1 &1934535855790818298
 GameObject:
   m_ObjectHideFlags: 0
@@ -256,7 +271,7 @@ GameObject:
   - component: {fileID: 783174284519340479}
   - component: {fileID: 6665222262918906612}
   m_Layer: 5
-  m_Name: ZoneText
+  m_Name: ZoneText_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using TMPro;
 using UnityEngine;
 
@@ -56,12 +57,14 @@ namespace Player
             int cubeCount = stackPoint.childCount;
             if (cubeCount > 0)
             {
-                TMP_Text zoneText = e.zone.GetChild(1).GetComponentInChildren<TMP_Text>();
-                int zoneLockCount = int.Parse(zoneText.text);
-
-                if (zoneLockCount > 0)
+                if (e.zone.GetChild(1).GetComponentInChildren<TMP_Text>() != null)
                 {
-                    DeStack(e, stackPoint.GetChild(cubeCount - 1), zoneText, zoneLockCount);
+                    TMP_Text zoneText = e.zone.GetChild(1).GetComponentInChildren<TMP_Text>();
+                    int zoneLockCount = int.Parse(zoneText.text);
+                    if (zoneLockCount > 0)
+                    {
+                        DeStack(e, stackPoint.GetChild(cubeCount - 1), zoneText, zoneLockCount);
+                    }
                 }
             }
         }
@@ -100,10 +103,19 @@ namespace Player
             cube.GetComponent<BoxCollider>().isTrigger = true;
             currentCubes--;
             lockCount--;
+            if (lockCount == 0)
+            {
+                UnlockZones();
+            }
             zoneText.text = lockCount.ToString();
             cubeCountText.text = currentCubes.ToString();
             positionToMoveTo = stackZone.localPosition;
             StartCoroutine(LerpCubetoZone(e, positionToMoveTo, cube, lerpValueToZone));
+        }
+
+        private void UnlockZones()
+        {
+            
         }
 
         private IEnumerator LerpCubetoPlayer(
