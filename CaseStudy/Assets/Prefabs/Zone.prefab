@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 1934535854926043503}
   - component: {fileID: 3111539472268258847}
   m_Layer: 0
-  m_Name: Zone_1
+  m_Name: Zone
   m_TagString: Zone
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -128,6 +128,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   zoneSO: {fileID: 11400000, guid: 36e8df2003aaad0468701b6e0ebebe28, type: 2}
+  nextZoneSO: {fileID: 0}
+  zoneToUnlock: {fileID: 0}
   zoneText: {fileID: 6665222262918906612}
 --- !u!1 &1934535855790818298
 GameObject:
@@ -285,7 +287,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6060175064355381215}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -1}
+  m_LocalPosition: {x: 0, y: 0, z: -0.11}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 7297702633640974538}

@@ -7,6 +7,8 @@ namespace Player
 {
     public class StackCubes : MonoBehaviour
     {
+        //TODO: Stack - destack scripts must be seperated!
+
         [SerializeField] private Transform stackPoint;
         [SerializeField] private TMP_Text cubeCountText;
         [SerializeField] private float lerpValueToPlayer = .25f;

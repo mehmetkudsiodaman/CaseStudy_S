@@ -6,7 +6,7 @@ namespace Player
     public class PlayerMovement : MonoBehaviour
     {
         [SerializeField] private FloatingJoystick floatingJoystick;
-        [SerializeField] private float playerSpeed = 3.0f;
+        [SerializeField] private float playerSpeed = 8.0f;
 
         private CharacterController controller;
         private Vector3 playerVelocity;
@@ -16,6 +16,13 @@ namespace Player
         {
             controller = GetComponent<CharacterController>();
             playerAnimator = GetComponent<Animator>();
+        }
+
+        private void Start()
+        {
+#if UNITY_EDITOR
+            playerSpeed = 20.0f;
+#endif
         }
 
         private void Update()
