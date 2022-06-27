@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 1934535854926043507}
   - component: {fileID: 1934535854926043503}
   - component: {fileID: 3111539472268258847}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Zone
   m_TagString: Zone
   m_Icon: {fileID: 0}
@@ -129,7 +129,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   zoneSO: {fileID: 11400000, guid: 36e8df2003aaad0468701b6e0ebebe28, type: 2}
   nextZoneSO: {fileID: 0}
-  zoneToUnlock: {fileID: 0}
   zoneText: {fileID: 6665222262918906612}
 --- !u!1 &1934535855790818298
 GameObject:
@@ -140,7 +139,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1934535855790818299}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: CubeStackPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -173,7 +172,7 @@ GameObject:
   - component: {fileID: 7312951673541514853}
   - component: {fileID: 8733490166403943660}
   - component: {fileID: 5383637327638973421}
-  m_Layer: 5
+  m_Layer: 10
   m_Name: ZoneCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -272,7 +271,7 @@ GameObject:
   - component: {fileID: 2157256693850314488}
   - component: {fileID: 783174284519340479}
   - component: {fileID: 6665222262918906612}
-  m_Layer: 5
+  m_Layer: 10
   m_Name: ZoneText_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
