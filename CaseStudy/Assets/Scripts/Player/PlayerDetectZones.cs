@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Player
 {
-    public class DetectZones : MonoBehaviour
+    public class PlayerDetectZones: MonoBehaviour
     {
         private Transform zone;
 

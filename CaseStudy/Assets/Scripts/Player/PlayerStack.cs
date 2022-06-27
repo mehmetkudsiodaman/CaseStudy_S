@@ -1,11 +1,12 @@
-﻿using System;
+﻿using Scripts;
 using System.Collections;
 using TMPro;
 using UnityEngine;
+using Zone;
 
 namespace Player
 {
-    public class StackCubes : MonoBehaviour
+    public class PlayerStack : MonoBehaviour
     {
         //TODO: Stack - destack scripts must be seperated!
 
@@ -14,16 +15,20 @@ namespace Player
         [SerializeField] private float lerpValueToPlayer = .25f;
         [SerializeField] private float lerpValueToZone = .85f;
 
-        private DetectCubes detectCubes;
-        private DetectZones detectZones;
         private int totalCubes = 10;
         private int currentCubes = 0;
         private Vector3 positionToMoveTo;
 
+        private PlayerDetectCubes detectCubes;
+        private PlayerDetectZones detectZones;
+        private StorageArea storageArea;
+        private Cube cubeScript;
+
         private void Awake()
         {
-            detectCubes = FindObjectOfType<DetectCubes>();
-            detectZones = FindObjectOfType<DetectZones>();
+            detectCubes = FindObjectOfType<PlayerDetectCubes>();
+            detectZones = FindObjectOfType<PlayerDetectZones>();
+            storageArea = FindObjectOfType<StorageArea>();
             cubeCountText.text = "0";
         }
 
@@ -33,7 +38,7 @@ namespace Player
             detectZones.OnZoneDetected += Stack_OnZoneDetected;
         }
 
-        private void Stack_OnCubeDetected(object sender, DetectCubes.OnCubeDetectedEventArgs e)
+        private void Stack_OnCubeDetected(object sender, PlayerDetectCubes.OnCubeDetectedEventArgs e)
         {
             if (currentCubes >= totalCubes * 3)
             {
@@ -54,7 +59,7 @@ namespace Player
             }
         }
 
-        private void Stack_OnZoneDetected(object sender, DetectZones.OnZoneDetectedEventArgs e)
+        private void Stack_OnZoneDetected(object sender, PlayerDetectZones.OnZoneDetectedEventArgs e)
         {
             int cubeCount = stackPoint.childCount;
             if (cubeCount > 0)
@@ -71,57 +76,64 @@ namespace Player
             }
         }
 
-        private void Stack(DetectCubes.OnCubeDetectedEventArgs e)
+        private void Stack(PlayerDetectCubes.OnCubeDetectedEventArgs e)
         {
             e.cube.SetParent(stackPoint);
             currentCubes++;
+
+            if (e.isInStorage)
+            {
+                storageArea.storageCubesCount--;
+            }
             cubeCountText.text = currentCubes.ToString();
             positionToMoveTo = new Vector3(0f, 0.5f * currentCubes, 0f);
+            e.cube.GetComponent<Cube>().isCubeStacked = true;
             StartCoroutine(LerpCubetoPlayer(e, positionToMoveTo, lerpValueToPlayer));
         }
 
-        private void StackLeft(DetectCubes.OnCubeDetectedEventArgs e)
+        private void StackLeft(PlayerDetectCubes.OnCubeDetectedEventArgs e)
         {
             e.cube.SetParent(stackPoint);
             currentCubes++;
+            if (e.isInStorage)
+            {
+                storageArea.storageCubesCount--;
+            }
             cubeCountText.text = currentCubes.ToString();
             positionToMoveTo = new Vector3(-1f, 0.5f * (currentCubes - totalCubes), 0f);
+            e.cube.GetComponent<Cube>().isCubeStacked = true;
             StartCoroutine(LerpCubetoPlayer(e, positionToMoveTo, lerpValueToPlayer));
         }
 
-        private void StackRight(DetectCubes.OnCubeDetectedEventArgs e)
+        private void StackRight(PlayerDetectCubes.OnCubeDetectedEventArgs e)
         {
             e.cube.SetParent(stackPoint);
             currentCubes++;
+            if (e.isInStorage)
+            {
+                storageArea.storageCubesCount--;
+            }
             cubeCountText.text = currentCubes.ToString();
             positionToMoveTo = new Vector3(1f, 0.5f * (currentCubes - (totalCubes * 2)), 0f);
+            e.cube.GetComponent<Cube>().isCubeStacked = true;
             StartCoroutine(LerpCubetoPlayer(e, positionToMoveTo, lerpValueToPlayer));
         }
 
-        private void DeStack(DetectZones.OnZoneDetectedEventArgs e, Transform cube, TMP_Text zoneText, int lockCount)
+        private void DeStack(PlayerDetectZones.OnZoneDetectedEventArgs e, Transform cube, TMP_Text zoneText, int lockCount)
         {
             Transform stackZone = e.zone.GetChild(0);
             cube.SetParent(stackZone);
             cube.GetComponent<BoxCollider>().isTrigger = true;
             currentCubes--;
             lockCount--;
-            if (lockCount == 0)
-            {
-                UnlockZones();
-            }
             zoneText.text = lockCount.ToString();
             cubeCountText.text = currentCubes.ToString();
             positionToMoveTo = stackZone.localPosition;
             StartCoroutine(LerpCubetoZone(e, positionToMoveTo, cube, lerpValueToZone));
         }
 
-        private void UnlockZones()
-        {
-            
-        }
-
         private IEnumerator LerpCubetoPlayer(
-            DetectCubes.OnCubeDetectedEventArgs e, Vector3 targetPosition, float duration)
+            PlayerDetectCubes.OnCubeDetectedEventArgs e, Vector3 targetPosition, float duration)
         {
             float time = 0;
             Vector3 startPosition = e.cube.localPosition;
@@ -138,7 +150,7 @@ namespace Player
         }
 
         private IEnumerator LerpCubetoZone(
-            DetectZones.OnZoneDetectedEventArgs e, Vector3 targetPosition, Transform cube, float duration)
+            PlayerDetectZones.OnZoneDetectedEventArgs e, Vector3 targetPosition, Transform cube, float duration)
         {
             float time = 0;
             Vector3 startPosition = cube.localPosition;

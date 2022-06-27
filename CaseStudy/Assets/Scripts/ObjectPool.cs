@@ -3,6 +3,7 @@ using UnityEngine;
 
 namespace Scripts
 {
+    //Object pool kullanmak gerekli mi?
     public class ObjectPool : MonoBehaviour
     {
         public static ObjectPool SharedInstance;
