@@ -1,6 +1,7 @@
 ﻿using Scripts;
 using System;
 using UnityEngine;
+using Zone;
 
 namespace Player
 {
@@ -9,6 +10,7 @@ namespace Player
         private Transform cube;
         private Cube cubeScript;
         private bool isInStorage = false;
+        private StorageArea storageArea;
 
         public event EventHandler<OnCubeDetectedEventArgs> OnCubeDetected;
 
@@ -18,11 +20,17 @@ namespace Player
             public bool isInStorage;
         }
 
+        private void Start()
+        {
+            storageArea = FindObjectOfType<StorageArea>();
+        }
+
         private void OnTriggerStay(Collider other)
         {
             if (other.CompareTag("Storage"))
             {
                 isInStorage = true;
+                storageArea.CheckCubeCount();
             }
             else
             {

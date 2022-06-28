@@ -84,7 +84,6 @@ namespace Zone
             nextZoneSO.IsActive = true;
             OnZoneUnlocked?.Invoke(this, new OnZoneUnlockedEventArgs
             { zonePosition = zoneSO.Zone, zoneHandler = nextZoneSO.ZoneHandler, zoneOrder = nextZoneSO .ZoneOrder});
-            
         }
     }
 }
