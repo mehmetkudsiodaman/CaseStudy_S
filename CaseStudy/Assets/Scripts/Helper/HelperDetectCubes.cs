@@ -9,8 +9,15 @@ namespace Helper
         private HelperStack helperStack;
         private HelperDetectStorage helperDetectStorage;
         private CubeSpawnPoint cubeSpawnPoint;
+        private CubeSpawnArea cubeSpawnArea;
+        private bool control;
 
-        public event EventHandler OnCubeDetectedHelper;
+        public event EventHandler<OnCubeDetectedHelperEventArgs> OnCubeDetectedHelper;
+
+        public class OnCubeDetectedHelperEventArgs : EventArgs
+        {
+            public Transform cube;
+        }
 
         private void OnEnable()
         {
@@ -20,11 +27,6 @@ namespace Helper
 
         private void OnTriggerEnter(Collider other)
         {
-            if (other.CompareTag("CubeSpawnPoint"))
-            {
-                cubeSpawnPoint = other.GetComponent<CubeSpawnPoint>();
-            }
-
             if (other.CompareTag("Cube"))
             {
                 if (helperDetectStorage.isInStorage)
@@ -34,10 +36,34 @@ namespace Helper
                 else
                 {
                     cube = other.transform;
+                    cube.parent.GetComponent<CubeSpawnPoint>().hasCube = false;
+                    cube.parent.GetComponent<CubeSpawnPoint>().isCubeStacked = true;
+                    control = true;
                     helperStack.StackHelper(cube);
-                    cubeSpawnPoint.isCubeStacked = true;
-                    cubeSpawnPoint.hasCube = false;
-                    OnCubeDetectedHelper?.Invoke(this, EventArgs.Empty);
+                    OnCubeDetectedHelper?.Invoke(this, new OnCubeDetectedHelperEventArgs { cube = cube });
+                }
+            }
+            else
+            {
+                control = false;
+            }
+        }
+
+        private void OnTriggerStay(Collider other)
+        {
+            if (other.CompareTag("CubeSpawnPoint"))
+            {
+                //Birden fazla küp eksiltiyor
+                cubeSpawnPoint = other.GetComponent<CubeSpawnPoint>();
+                cubeSpawnArea = cubeSpawnPoint.GetComponentInParent<Transform>()
+                    .GetComponentInParent<CubeSpawnArea>();
+                if (!cubeSpawnPoint.hasCube && cubeSpawnPoint.isCubeStacked)
+                {
+                    if (control)
+                    {
+                        cubeSpawnArea.totalCube--;
+                        control = false;
+                    }
                 }
             }
         }

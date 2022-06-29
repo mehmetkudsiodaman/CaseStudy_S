@@ -1,0 +1,44 @@
+________________________________________________________________________________
+
+***	PLAYER' DA DA 1' DEN FAZLA EKSILIYOR.
+________________________________________________________________________________
+
+player küpü gördüğünde değil, stacklediğinde event yollasam?
+bunu hallettİm
+
+________________________________________________________________________________
+
+***	HELPER' LAR KÜLERI TOPLADıĞıNDA CUPE SPAWN AREA' DA KÜP SAYıSı AZALMıYOR.
+________________________________________________________________________________
+
+CubeSpawnPoint.cs --> sorun olan yer
+private void CubeSpawnPoint_OnCubeDetectedHelper(object sender, HelperDetectCubes.OnCubeDetectedHelperEventArgs e)
+    {
+        if (hasCube)
+        {
+            hasCube = false;
+            isCubeStacked = true;
+            cubeSpawnArea.totalCube--;
+            Invoke(nameof(SpawnCube), 3f);
+        }
+    }
+
+helper scrİptİnde önceden hascube false yaptiğimiz İçİn İf İçİne gİrmİyor olabİlİr!
+
+cubespawnpoint.hascube = false;
+oncubedetectedhelper?.invoke(this, eventargs.empty);
+
+private void cubespawnpoint_oncubedetectedhelper(object sender, eventargs e)
+    {
+        if (hascube)
+        {
+            hascube = false;
+            iscubestacked = true;
+            cubespawnarea.totalcube--;
+            invoke(nameof(spawncube), 3f);
+        }
+    }
+	
+tek bİr scrİpt ve evente subscrİbe olduğu İçİn olabİlİr
+lİst oluşturdum
+olmadi?

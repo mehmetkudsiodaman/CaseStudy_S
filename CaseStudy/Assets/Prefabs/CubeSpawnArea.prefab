@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7139101935551390554}
   - component: {fileID: 3011610734537554330}
   - component: {fileID: 6490520391040647174}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Point_2
   m_TagString: CubeSpawnPoint
   m_Icon: {fileID: 6519382022992737161, guid: 0000000000000000d000000000000000, type: 0}
@@ -90,7 +90,7 @@ GameObject:
   - component: {fileID: 7139144044421461630}
   - component: {fileID: 774337317625536194}
   - component: {fileID: 6326310844611991718}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Point_10
   m_TagString: CubeSpawnPoint
   m_Icon: {fileID: 6519382022992737161, guid: 0000000000000000d000000000000000, type: 0}
@@ -167,7 +167,7 @@ GameObject:
   - component: {fileID: 5934475534746676311}
   - component: {fileID: 6064963158620572148}
   - component: {fileID: 8992477180313782595}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: CubeSpawnArea
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -246,7 +246,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4325853591317316779}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: CubeSpawnPoints
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -289,7 +289,7 @@ GameObject:
   - component: {fileID: 2671573829649524333}
   - component: {fileID: 3084935052453111032}
   - component: {fileID: 2199830677688939910}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Point_5
   m_TagString: CubeSpawnPoint
   m_Icon: {fileID: 6519382022992737161, guid: 0000000000000000d000000000000000, type: 0}
@@ -367,7 +367,7 @@ GameObject:
   - component: {fileID: 116716318734928170}
   - component: {fileID: 2828612404397150982}
   - component: {fileID: 6847720782522314569}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Point_8
   m_TagString: CubeSpawnPoint
   m_Icon: {fileID: 6519382022992737161, guid: 0000000000000000d000000000000000, type: 0}
@@ -445,7 +445,7 @@ GameObject:
   - component: {fileID: 6242064187879575511}
   - component: {fileID: 2838028621462805012}
   - component: {fileID: 8376439072234846409}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Point_9
   m_TagString: CubeSpawnPoint
   m_Icon: {fileID: 6519382022992737161, guid: 0000000000000000d000000000000000, type: 0}
@@ -523,7 +523,7 @@ GameObject:
   - component: {fileID: 5607939478339030170}
   - component: {fileID: 1508233269916530262}
   - component: {fileID: 5981573540983541691}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Point_6
   m_TagString: CubeSpawnPoint
   m_Icon: {fileID: 6519382022992737161, guid: 0000000000000000d000000000000000, type: 0}
@@ -600,7 +600,7 @@ GameObject:
   - component: {fileID: 6277614776653824056}
   - component: {fileID: 6277614776653824058}
   - component: {fileID: 6277614776653824059}
-  m_Layer: 5
+  m_Layer: 10
   m_Name: CubeSpawnText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -733,7 +733,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6277614778121359803}
   - component: {fileID: 7731437408590253794}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: CubeSpawnArea
   m_TagString: Zone
   m_Icon: {fileID: 0}
@@ -793,7 +793,7 @@ GameObject:
   - component: {fileID: 6277614778289290713}
   - component: {fileID: 6277614778289290710}
   - component: {fileID: 6277614778289290711}
-  m_Layer: 5
+  m_Layer: 10
   m_Name: CubeSpawnCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -893,7 +893,7 @@ GameObject:
   - component: {fileID: 8839584786485656955}
   - component: {fileID: 5717314136634690419}
   - component: {fileID: 4021473258635147792}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Point_4
   m_TagString: CubeSpawnPoint
   m_Icon: {fileID: 6519382022992737161, guid: 0000000000000000d000000000000000, type: 0}
@@ -971,7 +971,7 @@ GameObject:
   - component: {fileID: 1578459200298672110}
   - component: {fileID: 4382765824733359983}
   - component: {fileID: 8127080107068775139}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Point_1
   m_TagString: CubeSpawnPoint
   m_Icon: {fileID: 6519382022992737161, guid: 0000000000000000d000000000000000, type: 0}
@@ -1049,7 +1049,7 @@ GameObject:
   - component: {fileID: 8022179821480238978}
   - component: {fileID: 6266289900070916852}
   - component: {fileID: 4099111270858047140}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Point_7
   m_TagString: CubeSpawnPoint
   m_Icon: {fileID: 6519382022992737161, guid: 0000000000000000d000000000000000, type: 0}
@@ -1127,7 +1127,7 @@ GameObject:
   - component: {fileID: 7536411749604312285}
   - component: {fileID: 7499811712230390334}
   - component: {fileID: 8221974744979682197}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Point_3
   m_TagString: CubeSpawnPoint
   m_Icon: {fileID: 6519382022992737161, guid: 0000000000000000d000000000000000, type: 0}
