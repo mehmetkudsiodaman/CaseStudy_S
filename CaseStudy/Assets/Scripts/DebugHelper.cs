@@ -6,6 +6,8 @@ namespace Scripts
     public class DebugHelper: MonoBehaviour
     {
         [SerializeField] GameObject helperPrefab;
+        [SerializeField] GameObject debugCubes;
+        private bool isDebugCubesActive = false;
 
         public void TimeScaleX1()
         {
@@ -25,6 +27,12 @@ namespace Scripts
         public void SpawnHelper()
         {
             Instantiate(helperPrefab, helperPrefab.transform.position, Quaternion.identity);
+        }
+
+        public void DebugCubes()
+        {
+            isDebugCubesActive = !isDebugCubesActive;
+            debugCubes.SetActive(isDebugCubesActive);
         }
 
         public void Restart()

@@ -11,8 +11,6 @@ namespace Zone
         [SerializeField] private ZoneSO nextZoneSO;
         [SerializeField] private TMP_Text zoneText = null;
 
-        private PlayerDetectZones detectZones;
-
         public event EventHandler<OnZoneUnlockedEventArgs> OnZoneUnlocked;
 
         public class OnZoneUnlockedEventArgs : EventArgs
@@ -24,17 +22,16 @@ namespace Zone
 
         private void Awake()
         {
-            detectZones = FindObjectOfType<PlayerDetectZones>();
-        }
-
-        private void Start()
-        {
-            detectZones.OnZoneDetected += Zone_OnZoneDetected;
             zoneText.text = zoneSO.LockAmount.ToString();
             zoneSO.Unlocked = false;
             zoneSO.Zone = this.transform.localPosition;
             zoneSO.ZoneHandler = this;
+        }
 
+        private void Start()
+        {
+            PlayerDetectZones.OnZoneDetected += Zone_OnZoneDetected;
+            
             if (zoneSO.ZoneOrder == 1)
             {
                 zoneSO.IsActive = true;
@@ -62,7 +59,7 @@ namespace Zone
             if (zoneLockCount == 0)
             {
                 zoneSO.Unlocked = true;
-
+                zoneText.text = "XXX";
                 UnlockNextZone();
             }
 
@@ -83,7 +80,7 @@ namespace Zone
         {
             nextZoneSO.IsActive = true;
             OnZoneUnlocked?.Invoke(this, new OnZoneUnlockedEventArgs
-            { zonePosition = zoneSO.Zone, zoneHandler = nextZoneSO.ZoneHandler, zoneOrder = nextZoneSO .ZoneOrder});
+            { zonePosition = zoneSO.Zone, zoneHandler = nextZoneSO.ZoneHandler, zoneOrder = nextZoneSO.ZoneOrder});
         }
     }
 }

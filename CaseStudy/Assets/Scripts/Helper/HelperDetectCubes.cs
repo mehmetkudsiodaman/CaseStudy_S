@@ -7,7 +7,10 @@ namespace Helper
     {
         private Transform cube;
         private HelperStack helperStack;
-        HelperDetectStorage helperDetectStorage;
+        private HelperDetectStorage helperDetectStorage;
+        private CubeSpawnPoint cubeSpawnPoint;
+
+        public event EventHandler OnCubeDetectedHelper;
 
         private void OnEnable()
         {
@@ -17,6 +20,11 @@ namespace Helper
 
         private void OnTriggerEnter(Collider other)
         {
+            if (other.CompareTag("CubeSpawnPoint"))
+            {
+                cubeSpawnPoint = other.GetComponent<CubeSpawnPoint>();
+            }
+
             if (other.CompareTag("Cube"))
             {
                 if (helperDetectStorage.isInStorage)
@@ -27,6 +35,9 @@ namespace Helper
                 {
                     cube = other.transform;
                     helperStack.StackHelper(cube);
+                    cubeSpawnPoint.isCubeStacked = true;
+                    cubeSpawnPoint.hasCube = false;
+                    OnCubeDetectedHelper?.Invoke(this, EventArgs.Empty);
                 }
             }
         }

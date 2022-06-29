@@ -10,8 +10,8 @@ namespace Zone
         public int storageCubesCount = 0;
         private bool storageFilled;
 
-        public event EventHandler OnStorageFilled;
-        public event EventHandler OnStorageEmpty;
+        public static event EventHandler OnStorageFilled;
+        public static event EventHandler OnStorageEmpty;
 
         private void Update()
         {

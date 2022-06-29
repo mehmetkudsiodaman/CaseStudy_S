@@ -12,7 +12,7 @@ namespace Player
         private bool isInStorage = false;
         private StorageArea storageArea;
 
-        public event EventHandler<OnCubeDetectedEventArgs> OnCubeDetected;
+        public static event EventHandler<OnCubeDetectedEventArgs> OnCubeDetected;
 
         public class OnCubeDetectedEventArgs : EventArgs
         {

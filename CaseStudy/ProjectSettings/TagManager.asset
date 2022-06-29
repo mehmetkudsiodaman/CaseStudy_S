@@ -7,6 +7,8 @@ TagManager:
   - Cube
   - Zone
   - Storage
+  - CubeSpawnPoint
+  - Helper
   layers:
   - Default
   - TransparentFX

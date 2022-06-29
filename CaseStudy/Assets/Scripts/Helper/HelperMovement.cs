@@ -12,7 +12,6 @@ namespace Helper
         private NavMeshAgent agent;
 
         private HelperStack helperStack;
-        private StorageArea storageArea;
 
         private CubeDetectHelper[] targets;
         private bool isWaiting = false;
@@ -23,13 +22,12 @@ namespace Helper
             agent = GetComponent<NavMeshAgent>();
             helperStack = GetComponent<HelperStack>();
             targets = FindObjectsOfType<CubeDetectHelper>();
-            storageArea = FindObjectOfType<StorageArea>();
         }
 
         private void Start()
         {
-            storageArea.OnStorageFilled += Helper_OnStorageFilled;
-            storageArea.OnStorageEmpty += Helper_OnStorageEmpty;
+            StorageArea.OnStorageFilled += Helper_OnStorageFilled;
+            StorageArea.OnStorageEmpty += Helper_OnStorageEmpty;
 
             CheckTargets();
             FindCube();
@@ -53,6 +51,7 @@ namespace Helper
         {
             if (!isWaiting && agent.velocity == Vector3.zero)
             {
+                animator.SetBool("idle", true);
                 CheckTargets();
                 FindCube();
             }
@@ -65,7 +64,7 @@ namespace Helper
 
         public void FindCube()
         {
-            int rand = Random.Range(0, targets.Length);
+            int rand = Random.Range(0, targets.Length - 1);
             if (targets[rand].TryGetComponent(out Transform transform))
             {
                 agent.destination = transform.position;

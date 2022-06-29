@@ -78,7 +78,7 @@ GameObject:
   - component: {fileID: 7973663724915573608}
   m_Layer: 9
   m_Name: Helper
-  m_TagString: Untagged
+  m_TagString: Helper
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -132,11 +132,11 @@ CharacterController:
   m_Enabled: 1
   serializedVersion: 2
   m_Height: 2.3
-  m_Radius: 0.2
+  m_Radius: 0.35
   m_SlopeLimit: 0
   m_StepOffset: 0.2
-  m_SkinWidth: 0.0001
-  m_MinMoveDistance: 0.001
+  m_SkinWidth: 1
+  m_MinMoveDistance: 0.1
   m_Center: {x: 0, y: 1.14, z: 0}
 --- !u!195 &5131369718921729090
 NavMeshAgent:
@@ -147,15 +147,15 @@ NavMeshAgent:
   m_GameObject: {fileID: 1113225651578588751}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 0.19
+  m_Radius: 1
   m_Speed: 3.5
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
-  m_StoppingDistance: 0
-  m_AutoTraverseOffMeshLink: 1
+  m_StoppingDistance: 1.25
+  m_AutoTraverseOffMeshLink: 0
   m_AutoBraking: 1
-  m_AutoRepath: 1
+  m_AutoRepath: 0
   m_Height: 1.8
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
