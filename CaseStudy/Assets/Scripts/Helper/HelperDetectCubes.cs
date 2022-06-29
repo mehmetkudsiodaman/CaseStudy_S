@@ -6,20 +6,39 @@ namespace Helper
     public class HelperDetectCubes : MonoBehaviour
     {
         private Transform cube;
+        private HelperStack helperStack;
+        private HelperDetectStorage helperDetectStorage;
+        private CubeSpawnPoint cubeSpawnPoint;
 
-        public event EventHandler<OnCubeDetectedHelperEventArgs> OnCubeDetectedHelper;
+        public event EventHandler OnCubeDetectedHelper;
 
-        public class OnCubeDetectedHelperEventArgs : EventArgs
+        private void OnEnable()
         {
-            public Transform cube;
+            helperStack = GetComponentInParent<HelperStack>();
+            helperDetectStorage = GetComponent<HelperDetectStorage>();
         }
 
         private void OnTriggerEnter(Collider other)
         {
+            if (other.CompareTag("CubeSpawnPoint"))
+            {
+                cubeSpawnPoint = other.GetComponent<CubeSpawnPoint>();
+            }
+
             if (other.CompareTag("Cube"))
             {
-                cube = other.transform;
-                OnCubeDetectedHelper?.Invoke(this, new OnCubeDetectedHelperEventArgs { cube = cube });
+                if (helperDetectStorage.isInStorage)
+                {
+                    return;
+                }
+                else
+                {
+                    cube = other.transform;
+                    helperStack.StackHelper(cube);
+                    cubeSpawnPoint.isCubeStacked = true;
+                    cubeSpawnPoint.hasCube = false;
+                    OnCubeDetectedHelper?.Invoke(this, EventArgs.Empty);
+                }
             }
         }
     }

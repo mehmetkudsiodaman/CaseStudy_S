@@ -78,7 +78,7 @@ GameObject:
   - component: {fileID: 7973663724915573608}
   m_Layer: 9
   m_Name: Helper
-  m_TagString: Untagged
+  m_TagString: Helper
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -94,10 +94,10 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.75, y: 0.75, z: 0.75}
   m_Children:
+  - {fileID: 6720143339787956641}
+  - {fileID: 6720143338750771163}
   - {fileID: 4393258353689366742}
   - {fileID: 8300637384730220738}
-  - {fileID: 6720143338750771163}
-  - {fileID: 6720143339787956641}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -131,13 +131,13 @@ CharacterController:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Height: 2.75
-  m_Radius: 0.5
+  m_Height: 2.3
+  m_Radius: 0.35
   m_SlopeLimit: 0
   m_StepOffset: 0.2
-  m_SkinWidth: 0.08
-  m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 1.34, z: 0.1}
+  m_SkinWidth: 1
+  m_MinMoveDistance: 0.1
+  m_Center: {x: 0, y: 1.14, z: 0}
 --- !u!195 &5131369718921729090
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -147,16 +147,16 @@ NavMeshAgent:
   m_GameObject: {fileID: 1113225651578588751}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 0.5
+  m_Radius: 1
   m_Speed: 3.5
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
-  m_StoppingDistance: 0
-  m_AutoTraverseOffMeshLink: 1
+  m_StoppingDistance: 1.25
+  m_AutoTraverseOffMeshLink: 0
   m_AutoBraking: 1
-  m_AutoRepath: 1
-  m_Height: 2
+  m_AutoRepath: 0
+  m_Height: 1.8
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
@@ -184,9 +184,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d37356564ddee046b4ddf1af4420013, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stackPoint: {fileID: 6720143339787956641}
   lerpValueToHelper: 0.25
   lerpValueToStorage: 0.85
+  hasCube: 0
+  storage: {fileID: 0}
 --- !u!1 &1163509819230329955
 GameObject:
   m_ObjectHideFlags: 0
@@ -278,7 +279,7 @@ Transform:
   m_Children:
   - {fileID: 6352009450442595821}
   m_Father: {fileID: 304318947421951221}
-  m_RootOrder: 1
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1456730930326045795
 GameObject:
@@ -772,11 +773,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6720143338750771140}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.4, z: 0.3}
+  m_LocalPosition: {x: 0, y: 0.4, z: 0.772}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 304318947421951221}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &6720143338750771161
 BoxCollider:
@@ -803,6 +804,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14738cc25a51a6a45846ee5e362b5957, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isInStorage: 0
 --- !u!114 &5597625427076265892
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -843,7 +845,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 304318947421951221}
-  m_RootOrder: 3
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6927044278891917544
 GameObject:
@@ -1093,7 +1095,7 @@ Transform:
   m_LocalScale: {x: 100, y: 100, z: 100}
   m_Children: []
   m_Father: {fileID: 304318947421951221}
-  m_RootOrder: 0
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!137 &1258098610186748983
 SkinnedMeshRenderer:

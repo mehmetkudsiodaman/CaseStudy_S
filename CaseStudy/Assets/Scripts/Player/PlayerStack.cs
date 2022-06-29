@@ -19,23 +19,18 @@ namespace Player
         private int currentCubes = 0;
         private Vector3 positionToMoveTo;
 
-        private PlayerDetectCubes detectCubes;
-        private PlayerDetectZones detectZones;
         private StorageArea storageArea;
-        private Cube cubeScript;
 
         private void Awake()
         {
-            detectCubes = FindObjectOfType<PlayerDetectCubes>();
-            detectZones = FindObjectOfType<PlayerDetectZones>();
             storageArea = FindObjectOfType<StorageArea>();
             cubeCountText.text = "0";
         }
 
         private void Start()
         {
-            detectCubes.OnCubeDetected += Stack_OnCubeDetected;
-            detectZones.OnZoneDetected += Stack_OnZoneDetected;
+            PlayerDetectCubes.OnCubeDetected += Stack_OnCubeDetected;
+            PlayerDetectZones.OnZoneDetected += Stack_OnZoneDetected;
         }
 
         private void Stack_OnCubeDetected(object sender, PlayerDetectCubes.OnCubeDetectedEventArgs e)
@@ -64,7 +59,7 @@ namespace Player
             int cubeCount = stackPoint.childCount;
             if (cubeCount > 0)
             {
-                if (e.zone.GetChild(1).GetComponentInChildren<TMP_Text>() != null)
+                if (e.zone.GetChild(1).GetComponentInChildren<TMP_Text>().text != "XXX")
                 {
                     TMP_Text zoneText = e.zone.GetChild(1).GetComponentInChildren<TMP_Text>();
                     int zoneLockCount = int.Parse(zoneText.text);

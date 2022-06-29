@@ -5,21 +5,33 @@ namespace Helper
 {
     public class HelperDetectStorage : MonoBehaviour
     {
+        [HideInInspector] public bool isInStorage;
         private Transform storage;
+        private HelperStack helperStack;
 
-        public event EventHandler<OnStorageDetectedEventArgs> OnStorageDetected;
-
-        public class OnStorageDetectedEventArgs : EventArgs
+        private void OnEnable()
         {
-            public Transform storage;
+            helperStack = GetComponentInParent<HelperStack>();
+        }
+
+        private void OnTriggerEnter(Collider other)
+        {
+            if (other.CompareTag("Storage"))
+            {
+                storage = other.transform;
+                helperStack.DeStackHelper(storage);
+            }
         }
 
         private void OnTriggerStay(Collider other)
         {
             if (other.CompareTag("Storage"))
             {
-                storage = other.transform;
-                OnStorageDetected?.Invoke(this, new OnStorageDetectedEventArgs { storage = storage });
+                isInStorage = true;
+            }
+            else
+            {
+                isInStorage = false;
             }
         }
     }

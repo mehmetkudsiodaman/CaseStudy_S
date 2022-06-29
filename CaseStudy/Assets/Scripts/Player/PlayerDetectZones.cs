@@ -7,7 +7,7 @@ namespace Player
     {
         private Transform zone;
 
-        public event EventHandler<OnZoneDetectedEventArgs> OnZoneDetected;
+        public static event EventHandler<OnZoneDetectedEventArgs> OnZoneDetected;
 
         public class OnZoneDetectedEventArgs : EventArgs
         {

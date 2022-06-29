@@ -7,16 +7,9 @@ namespace Scripts
     {
         [HideInInspector] public bool isCubeStacked;
 
-        private PlayerDetectCubes playerDetectCubes;
-
-        private void Awake()
-        {
-            playerDetectCubes = FindObjectOfType<PlayerDetectCubes>();
-        }
-
         private void Start()
         {
-            playerDetectCubes.OnCubeDetected += Cube_OnCubeDetected;
+            PlayerDetectCubes.OnCubeDetected += Cube_OnCubeDetected;
         }
 
         private void Cube_OnCubeDetected(object sender, PlayerDetectCubes.OnCubeDetectedEventArgs e)
